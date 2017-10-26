@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import Catalog from './Catalog'
+import CreateCatalog from './CreateCatalog'
 
 class App extends Component {
 
   componentDidMount() {
 
-    console.log(Catalog);
+    console.log(CreateCatalog);
 
   }
   render() {
@@ -29,13 +29,14 @@ class App extends Component {
                     <span className="caret"></span>
                   </a>
                   <ul className="dropdown-menu">
-                    <li><Link to="/Catalog">Create</Link></li>
-                    <li><a href="#">Page 1-2</a></li>
-                    <li><a href="#">Page 1-3</a></li>
+                    <li><Link to="/CreateCatalog">Create</Link></li>
+                    <li><a href="#">Update</a></li>
+                    <li><a href="#">Browse</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
+                <li><a href="#">Category</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#">SKUs</a></li>
               </ul>
             </div>
           </nav>
@@ -43,7 +44,7 @@ class App extends Component {
             <h3>Main content </h3>
             <p>This is the main COntent area </p>
           </div>
-          <Route path="/Catalog" component={Catalog} />
+          <Route path="/CreateCatalog" component={CreateCatalog} />
             </div>
     </Router>
   

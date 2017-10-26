@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 import axios from 'axios';
 
-class Catalog extends Component {
+class CreateCatalog extends Component {
 
   componentDidMount() {
   }
@@ -39,6 +39,7 @@ class Catalog extends Component {
         method: 'post',
         headers: {},
         params: {
+          id: this.state.id,
           name: this.state.name,
           description: this.state.description,
           longDescription: this.state.longDescription
@@ -59,6 +60,10 @@ class Catalog extends Component {
       }).catch((error) => {
         console.log("Error ");
         console.log(error);
+        console.log(error.response);
+        this.setState({
+          successMessage:'Error Occurred : '+ error.response.data.message
+        })
       });
 
   }
@@ -76,12 +81,13 @@ class Catalog extends Component {
             this.createCatalog(event);
           }}
             method="post">
-
+            <div className="form-group">
+              <label htmlFor="id">Id:</label>
+              <input type="text" name="id" value={this.state.id} onChange={(event) => {this.handleChange(event);}} className="form-control" />
+            </div>
             <div className="form-group">
               <label htmlFor="name">Name:</label>
-              <input type="text" name="name" value={this.state.name} onChange={(event) => {
-                this.handleChange(event);
-              }} className="form-control" />
+              <input type="text" name="name" value={this.state.name} onChange={(event) => {this.handleChange(event);}} className="form-control" />
             </div>
             <div className="form-group">
               <label htmlFor="Desciption">Desciption:</label>
@@ -101,4 +107,4 @@ class Catalog extends Component {
   }
 }
 
-export default Catalog;
+export default CreateCatalog;
