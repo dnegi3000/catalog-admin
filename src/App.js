@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route  } from 'react-router-dom';
 import CreateCatalog from './CreateCatalog'
+import Create from './Create'
 
 class App extends Component {
 
@@ -12,11 +13,24 @@ class App extends Component {
 
   }
   render() {
+    
+      var data = {
+        name:'Category',
+        attributes:[
+            { name: 'id' } ,
+            { name: 'name' },
+            { name: 'site' },
+            { name: 'country'},
+            { name: 'longDescription'},
+            { name: 'description'}
+        ]
+        }
     return (
-      
+
+
       <Router>
         <div>
-           <nav className="navbar navbar-inverse">
+          <nav className="navbar navbar-inverse">
             <div className="container-fluid">
               <div className="navbar-header">
                 <a className="navbar-brand" href="#">CatalogSer</a>
@@ -34,7 +48,16 @@ class App extends Component {
                     <li><a href="#">Browse</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Category</a></li>
+                <li className="dropdown">
+                  <a className="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Category
+                    <span className="caret"></span>
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li><Link to="/createCategory" details="jfdfkdslkfdjl">Create</Link></li>
+                    <li><a href="#">Category</a></li>
+                  </ul>
+                </li>
                 <li><a href="#">Product</a></li>
                 <li><a href="#">SKUs</a></li>
               </ul>
@@ -45,10 +68,11 @@ class App extends Component {
             <p>This is the main COntent area </p>
           </div>
           <Route path="/CreateCatalog" component={CreateCatalog} />
-            </div>
-    </Router>
-  
-     
+          <Route  path="/createCategory" component={Create} details={data} />
+        </div>
+      </Router>
+
+
 
     );
   }
