@@ -54,7 +54,7 @@ class App extends Component {
                     <span className="caret"></span>
                   </a>
                   <ul className="dropdown-menu">
-                    <li><Link to="/createCategory" details="jfdfkdslkfdjl">Create</Link></li>
+                    <li><Link to={{pathname:"/createCategory",details:data}}>Create</Link></li>
                     <li><a href="#">Category</a></li>
                   </ul>
                 </li>
@@ -68,7 +68,7 @@ class App extends Component {
             <p>This is the main COntent area </p>
           </div>
           <Route path="/CreateCatalog" component={CreateCatalog} />
-          <Route  path="/createCategory" component={Create} details={data} />
+          <Route  path="/createCategory" component={Create}/>
         </div>
       </Router>
 

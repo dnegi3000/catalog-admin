@@ -3,34 +3,32 @@ import React, { Component } from 'react';
 import './App.css';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
-
+import CreateFormRender from './CreateFormRender';
 class Create extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  componentDidMount(){
+  componentDidMount() {
     console.log(this.props)
   }
   render() {
-    let attributes;
+    let attributes = this.props.location;
+    console.log(".............");
+    console.log(this.props.location);
+    if (this.props.location.details === undefined ||
+      this.props.location.details === "" || this.props.location.details == null) {
+      return <div> Click to do the action </div>
+    }
+    else {
+      return (
+        <div>
+          Create {attributes.details.name}
+          <CreateFormRender data={attributes.details} />
+         
+        </div>
 
-    console.log(this.props);
-    return (
-    <div>ddddddddddddddd
-    {/* attributes.forEach(
-      function(element) {
-           <div className="form-group">
-              <label htmlFor={element.name}> Id:</label>
-              <input type="text" name={element.name} className="form-control" />
-           </div>
-           
-          
-        }, this
-    );   */}
-       
-    </div>
-     
-    );
+      );
+    }
   }
 }
 
